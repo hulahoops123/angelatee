@@ -19,6 +19,8 @@
     "@nuxtjs/google-fonts": "^3.0.1",
     "@nuxtjs/sitemap": "^7.2.10",
     "@vueuse/nuxt": "^10.1.2",
-    "photoswipe": "^5.4.4"
+    "embla-carousel": "^8.6.0",
+    "photoswipe": "^5.4.4",
+    "tailwind-scrollbar-hide": "^4.0.0"
   }
 }

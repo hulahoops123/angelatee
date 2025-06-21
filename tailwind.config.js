@@ -29,8 +29,23 @@ module.exports = {
           '75%': { transform: 'scale(0.95)' },
           '100%': { transform: 'scale(1)' },
         },
+        //fade-bounce
+        'fade-bounce': {
+          '0%': { opacity: '0', transform: 'translateY(0)' },
+          '10%': { opacity: '1', transform: 'translateY(-10%)' },
+          '20%': { transform: 'translateY(0)' },
+          '30%': { transform: 'translateY(-5%)' },
+          '40%': { transform: 'translateY(0)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        'pulse-once': {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.3)' },
+        },
       },
       animation: {
+        'pulse-once': 'pulseOnce 0.4s ease-in-out',
+        'fade-bounce-3': 'fade-bounce 1s ease-in-out 1',
         spin: 'spin 1s linear infinite',
         'spin-reverse': 'spin-reverse 1s linear infinite',
         'subtle-celebrate': 'subtle-celebrate 0.3s ease-in-out 1',
@@ -38,6 +53,7 @@ module.exports = {
     },
   },
   plugins: [
+    require('tailwind-scrollbar-hide'), // ✅ Add this line
     function ({ addUtilities }) {
       const newUtilities = {
         '.animation-running': {
