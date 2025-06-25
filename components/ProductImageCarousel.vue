@@ -1,19 +1,28 @@
 <template>
-  <div>
+  <div class="bg-amber-100 py-4 rounded-xl shadow-inner">
     <!-- Always use Embla, even for 1 image -->
-    <div ref="viewport" class="overflow-hidden">
-      <div ref="container" class="flex touch-pan-x" :style="slideStyles">
+    <div ref="viewport" class="overflow-hidden px-4">
+      <div
+        ref="container"
+        class="flex touch-pan-x gap-4"
+        :style="slideStyles"
+      >
         <div
           v-for="(img, index) in displayedImages"
           :key="index"
-          class="snap-center flex-shrink-0 w-[65vw] h-56 px-2"
+          class="snap-center flex-shrink-0 w-[65vw] h-60 rounded-lg overflow-hidden shadow-md border border-amber-200 bg-white"
         >
-          <img :src="img.url" class="w-full h-full object-cover rounded-lg border" />
+          <img
+            :src="img.url"
+            alt="Product Image"
+            class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+          />
         </div>
       </div>
     </div>
   </div>
 </template>
+
 
 <script setup>
 import emblaCarousel from 'embla-carousel'

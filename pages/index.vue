@@ -1,27 +1,47 @@
 <template>
-  <div class="p-6">
+  <div class="relative min-h-screen overflow-hidden bg-transparent text-amber-100">
+
+    <!-- 🌌 Matrix Canvas Background -->
+
+    <!-- 🦸 Main Content -->
     <HeroSection />
 
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-      <div
-        v-for="product in products"
-        :key="product.node.handle"
-        class="border p-4 rounded hover:shadow"
-      >
+    <p id="products"
+      class="text-3xl font-semibold z-0 tracking-tight py-4 scroll-mt-12 px-4 text-center bg-transparent backdrop-blur-sm font-raleway">
+      Divinely Selected
+    </p>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-8 px-4 sm:px-0 pb-8">
+      <div v-for="product in products" :key="product.node.handle"
+        class="rounded-xl border border-amber-100 bg-amber-50 p-4 hover:shadow-lg hover:shadow-amber-200/60 hover:scale-[1.02] transition-all duration-300">
         <NuxtLink :to="`/products/${product.node.handle}`">
-          <img
-            :src="product.node.images?.edges[0]?.node?.url || ''"
-            alt="product"
-            class="w-full aspect-[4/5] object-cover mb-2"
-          />
-          <p class="font-semibold">{{ product.node.title }}</p>
+          <img :src="product.node.images?.edges[0]?.node?.url || ''" alt="product"
+            class="w-full aspect-[4/5] object-cover mb-3 rounded-md" />
+          <p class="text-amber-900 font-semibold text-base mb-1">
+            {{ product.node.title }}
+          </p>
+          <p class="text-sm">
+            <span v-if="product.node.variants.edges[0].node.compareAtPrice?.amount" class="text-zinc-500 font-semibold">
+              R{{ Math.round(product.node.variants.edges[0].node.price.amount) }}
+            </span>
+            <span v-if="product.node.variants.edges[0].node.compareAtPrice?.amount"
+              class="text-rose-400 line-through ml-2">
+              R{{ Math.round(product.node.variants.edges[0].node.compareAtPrice.amount) }}
+            </span>
+            <span v-else class="text-purple-700 font-semibold">
+              R{{ Math.round(product.node.variants.edges[0].node.price.amount) }}
+            </span>
+          </p>
         </NuxtLink>
       </div>
     </div>
+
   </div>
 </template>
 
+
 <script setup lang="ts">
+import { onMounted } from 'vue'
 // @ts-ignore
 const { fetchShopify } = useShopify()
 const productQuery = `
@@ -39,6 +59,19 @@ const productQuery = `
               }
             }
           }
+          variants(first: 1) {
+            edges {
+              node {
+                price {
+                  amount
+                  currencyCode
+                }
+                compareAtPrice {
+                  amount
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -50,5 +83,6 @@ const data = await fetchShopify(productQuery)
 console.log('RAW response from Shopify:', data)
 const products = data?.data?.products?.edges || []
 console.log('Shopify products:', products)
+
 
 </script>

@@ -2,6 +2,7 @@
 import { defineNuxtConfig } from "nuxt/config";
 export default defineNuxtConfig({
   devtools: { enabled: false },
+  css: ['@/assets/css/global.css'],
 
   devServer: {
     port: 4000,
@@ -19,6 +20,7 @@ export default defineNuxtConfig({
     public: {
       shopifyDomain: process.env.SHOPIFY_DOMAIN,
       shopifyToken: process.env.SHOPIFY_STOREFRONT_TOKEN,
+      SHOPIFY_STORE_URL: process.env.SHOPIFY_STORE_URL
     },
   },
   // @ts-ignore: googleFonts module options are not typed by default.
