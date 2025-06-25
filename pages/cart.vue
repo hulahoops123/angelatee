@@ -73,19 +73,19 @@ const {
 const currencySymbol = 'R'
 const hasPendingConfirmation = ref(false)
 
+const config = useRuntimeConfig()
+
 const goToShopifyCheckout = () => {
   const lineItems = cartItems.value.map(item => {
-    // Ensure item.id is a gid like "gid://shopify/ProductVariant/43460823482419"
     const parts = item.id.split('/')
-    const variantId = parts[parts.length - 1] // Extract just the numeric ID
+    const variantId = parts[parts.length - 1]
     return `${variantId}:${item.quantity}`
   }).join(',')
 
-  const checkoutUrl = `https://nv09tq-2g.myshopify.com/cart/${lineItems}`
+  const checkoutUrl = `https://${config.public.shopifyDomain}/cart/${lineItems}`
   console.log('Checkout URL:', checkoutUrl)
 
   window.location.href = checkoutUrl
 }
-
 
 </script>
