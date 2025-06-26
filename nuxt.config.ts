@@ -27,16 +27,19 @@ export default defineNuxtConfig({
   },
 
   // @ts-ignore: googleFonts module options are not typed by default.
-  googleFonts: {
-    display: "swap",
-    families: {
-      Raleway: true,
-      Staatliches: true,
-      "Clicker Script": true,
-      Quintessential: true,
-      "Moon Dance": true,
-    },
+googleFonts: {
+  display: "swap",
+  preload: true,       // 👈 preload fonts early
+  preconnect: true,    // 👈 establish early connections to fonts.googleapis.com
+  families: {
+    Raleway: true,
+    Staatliches: true,
+    "Clicker Script": true,
+    Quintessential: true,
+    "Moon Dance": true,
   },
+},
+
 
   compatibilityDate: "2025-03-06",
 });
