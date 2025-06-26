@@ -1,6 +1,8 @@
 <template>
-  <section class="relative inset-0 top-0 w-full min-h-[100vh] flex items-end justify-center bg-cover bg-center z-0"
-    style="background-image: url('/images/cover.png');">
+<section
+  class="relative inset-0 top-0 w-full min-h-[100vh] flex items-end justify-center bg-cover bg-center z-0"
+  style="background-image: url('/images/hero_optimized.webp');"
+>
     <!-- Text Container Wrapper (full width, controls overlay) -->
     <div class="relative z-10 w-full px-4 pb-20 sm:pb-32">
       <!-- Blur Background (now spans full width of viewport) -->
