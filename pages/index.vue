@@ -42,6 +42,8 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
+import { useCart } from '@/composables/useCart'
+
 // @ts-ignore
 const { fetchShopify } = useShopify()
 const productQuery = `
@@ -83,6 +85,12 @@ const data = await fetchShopify(productQuery)
 console.log('RAW response from Shopify:', data)
 const products = data?.data?.products?.edges || []
 console.log('Shopify products:', products)
-
+onMounted(() => {
+  const referrer = document.referrer
+  console.log(referrer)
+  if (referrer.includes('myshopify.com') && referrer.includes('thank_you')) {
+    useCart().clearCart()
+  }
+})
 
 </script>
