@@ -87,8 +87,10 @@ const products = data?.data?.products?.edges || []
 console.log('Shopify products:', products)
 onMounted(() => {
   const referrer = document.referrer
-  console.log(referrer)
-  if (referrer.includes('myshopify.com') && referrer.includes('thank_you')) {
+  console.log('Referrer:', referrer)
+
+  if (referrer.includes('myshopify.com')) {
+    console.log('Cart clear triggered')
     useCart().clearCart()
   }
 })
