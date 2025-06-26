@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { defineNuxtConfig } from "nuxt/config";
+
 export default defineNuxtConfig({
   devtools: { enabled: false },
   css: ['@/assets/css/global.css'],
@@ -13,8 +14,9 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "@nuxtjs/google-fonts",
     "@nuxt/image",
-    "@nuxtjs/sitemap", // ← add this line
+    "@nuxtjs/sitemap", // ✅ Sitemap module
   ],
+
   // @ts-ignore
   runtimeConfig: {
     public: {
@@ -23,6 +25,7 @@ export default defineNuxtConfig({
       SHOPIFY_STORE_URL: process.env.SHOPIFY_STORE_URL
     },
   },
+
   // @ts-ignore: googleFonts module options are not typed by default.
   googleFonts: {
     display: "swap",
@@ -34,10 +37,7 @@ export default defineNuxtConfig({
       "Moon Dance": true,
     },
   },
-  // @ts-ignore: Nuxt does not type sitemap config by default
-  sitemap: {
-    siteUrl: "https://faithfulfriendportraits.co.za",
-  },
 
   compatibilityDate: "2025-03-06",
 });
+

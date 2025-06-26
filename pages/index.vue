@@ -82,12 +82,12 @@ const productQuery = `
 
 // @ts-ignore
 const data = await fetchShopify(productQuery)
-console.log('RAW response from Shopify:', data)
+// console.log('RAW response from Shopify:', data)
 const products = data?.data?.products?.edges || []
-console.log('Shopify products:', products)
+// console.log('Shopify products:', products)
 onMounted(() => {
   const referrer = document.referrer
-  console.log('Referrer:', referrer)
+  // console.log('Referrer:', referrer)
 
   if (referrer.includes('myshopify.com')) {
     console.log('Cart clear triggered')

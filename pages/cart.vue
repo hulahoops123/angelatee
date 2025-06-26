@@ -34,9 +34,9 @@
         </button>
 
         <!-- 🔧 Dev Only Clear Button -->
-        <button @click="clearCart()" class="text-sm text-rose-500 mt-6 underline">
+        <!-- <button @click="clearCart()" class="text-sm text-rose-500 mt-6 underline">
           Clear Cart (Dev Only)
-        </button>
+        </button> -->
 
   
       </div>
