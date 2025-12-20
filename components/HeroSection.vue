@@ -13,10 +13,10 @@
       <!-- Text Content -->
       <div class="text-amber-50 text-center max-w-2xl mx-auto pb-16">
         <h1 class="text-4xl md:text-6xl font-bold leading-tight font-staatliches">
-          Clothes with Cosmic Meaning
+          HIGH VIBE DRIP. WEAR YOUR TRUTH
         </h1>
         <p class="text-lg md:text-xl mt-4 font-raleway">
-          Inspired by the vibrations of angel numbers. Made to resonate with your heart, not just your eyes.
+          For those bold enough to Talk it, Walk it & Wear it.
         </p>
         <button @click="scrollToProducts"
           class="inline-block mt-6 px-6 py-3 bg-zinc-50 text-amber-900 font-semibold rounded-lg hover:bg-zinc-100 transition font-raleway">
