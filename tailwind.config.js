@@ -10,6 +10,14 @@ module.exports = {
         moondance: ['Moon Dance'],
         quintessential: ['Quintessential'],
       },
+      textShadow: {
+        sm: '0 1px 2px rgba(0, 0, 0, 0.5)',
+        DEFAULT: '0 2px 4px rgba(0, 0, 0, 0.5)',
+        lg: '0 8px 16px rgba(0, 0, 0, 0.5)',
+        xl: '0 12px 24px rgba(0, 0, 0, 0.5)',
+        '2xl': '0 16px 32px rgba(0, 0, 0, 0.5)',
+        none: 'none',
+      },
       keyframes: {
         // Spin forward (default)
         spin: {
@@ -70,6 +78,16 @@ module.exports = {
         },
       };
       addUtilities(newUtilities, ['responsive', 'hover']);
+    },
+    function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          'text-shadow': (value) => ({
+            textShadow: value,
+          }),
+        },
+        { values: theme('textShadow') }
+      );
     },
   ],
 }

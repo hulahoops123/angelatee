@@ -1,42 +1,37 @@
-# Nuxt 3 Minimal Starter
+# Aligned Apparel
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+**Live Site:** https://alignedapparel.co.za
 
-## Setup
+Custom Nuxt 3 storefront with Shopify backend integration.
 
-Make sure to install the dependencies:
+## Documentation
+
+- **[PROJECT_NOTES.md](./PROJECT_NOTES.md)** - Complete system documentation, architecture, setup instructions, and deployment info
+- **[CODE_REVIEW.md](./CODE_REVIEW.md)** - Code review report, optimizations, and maintenance guidelines
+
+## Quick Start
 
 ```bash
-# yarn
-yarn install
-
-# npm
+# Install dependencies
 npm install
 
-# pnpm
-pnpm install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`
-
-```bash
+# Development server (runs on http://localhost:4000)
 npm run dev
-```
 
-## Production
-
-Build the application for production:
-
-```bash
+# Build for production
 npm run build
 ```
 
-Locally preview production build:
+## Environment Variables
 
+Create `.env` file with:
 ```bash
-npm run preview
+SHOPIFY_DOMAIN=your-store.myshopify.com
+SHOPIFY_STOREFRONT_TOKEN=your-token-here
+SHOPIFY_STORE_URL=https://your-store.myshopify.com
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+---
+
+**Developer:** Jonathan @ Hulahoops Web Dev
+**Last Updated:** 2026-01-09

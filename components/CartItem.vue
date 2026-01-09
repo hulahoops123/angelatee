@@ -6,7 +6,7 @@
       showConfirm ? 'blur-[2px]' : ''
     ]">
       <!-- Image -->
-      <img :src="item.image" alt="Product image" class="w-16 h-20 object-cover rounded-md border border-amber-200 shadow" />
+      <img :src="item.image" :alt="`${item.title} product image`" class="w-16 h-20 object-cover rounded-md border border-amber-200 shadow" />
 
       <!-- Title + Size -->
       <div class="flex-1 min-w-[140px]">
@@ -25,11 +25,17 @@
           <span>{{ currencySymbol }}{{ (item.price * item.quantity).toFixed(2) }}</span>
         </div>
         <div class="flex items-center justify-end gap-2">
-          <button @click="handleDecrement" class="px-2 py-1 bg-amber-100 border border-amber-300 rounded text-sm font-semibold text-amber-900 hover:bg-amber-200">
+          <button
+            @click="handleDecrement"
+            :aria-label="item.quantity === 1 ? 'Remove item from cart' : 'Decrease quantity'"
+            class="px-2 py-1 bg-amber-100 border border-amber-300 rounded-md text-sm font-semibold text-amber-900 hover:bg-amber-200">
             –
           </button>
-          <span class="w-6 text-center text-sm text-amber-900">{{ item.quantity }}</span>
-          <button @click="incrementItemQuantity(item.id)" class="px-2 py-1 bg-amber-100 border border-amber-300 rounded text-sm font-semibold text-amber-900 hover:bg-amber-200">
+          <span class="w-6 text-center text-sm text-amber-900" aria-label="Quantity">{{ item.quantity }}</span>
+          <button
+            @click="incrementItemQuantity(item.id)"
+            aria-label="Increase quantity"
+            class="px-2 py-1 bg-amber-100 border border-amber-300 rounded-md text-sm font-semibold text-amber-900 hover:bg-amber-200">
             +
           </button>
         </div>
@@ -41,8 +47,8 @@
       class="absolute inset-0 flex flex-col items-center justify-center bg-amber-50/90 border border-amber-200 rounded-lg shadow-lg p-4 z-10">
       <p class="text-center font-medium text-amber-900 mb-3">Remove this item from your cart?</p>
       <div class="flex gap-3">
-        <button @click="confirmDelete" class="bg-red-600 text-white px-4 py-1 rounded hover:bg-red-700">Yes</button>
-        <button @click="cancelDelete" class="border border-amber-300 px-4 py-1 rounded hover:bg-amber-100">Cancel</button>
+        <button @click="confirmDelete" class="bg-red-600 text-neutral-50 px-4 py-1 rounded-md hover:bg-red-700">Yes</button>
+        <button @click="cancelDelete" class="border border-amber-300 text-amber-900 px-4 py-1 rounded-md hover:bg-amber-100">Cancel</button>
       </div>
     </div>
   </div>
@@ -86,13 +92,13 @@ function handleDecrement() {
 }
 
 function confirmDelete() {
-  // Let cart.vue handle actual deletion through prop method
+  // User confirmed removal - decrement to 0 which removes item
   decrementItemQuantity(item.id)
   showConfirm.value = false
 }
 
 function cancelDelete() {
-  item.quantity = 1
+  // User canceled removal - just close dialog, quantity unchanged
   showConfirm.value = false
 }
 onBeforeUnmount(() => {

@@ -32,13 +32,6 @@
           class="mt-6 w-full bg-amber-50 text-zinc-900 py-3 rounded-lg font-semibold hover:opacity-90 transition disabled:opacity-50 animate-subtle-celebrate">
           Proceed to Checkout
         </button>
-
-        <!-- 🔧 Dev Only Clear Button -->
-        <!-- <button @click="clearCart()" class="text-sm text-rose-500 mt-6 underline">
-          Clear Cart (Dev Only)
-        </button> -->
-
-  
       </div>
 
       <!-- 🕊️ Empty Cart State -->
@@ -65,7 +58,6 @@ const {
   cartItems,
   total,
   hydrated,
-  clearCart,
   incrementItemQuantity,
   decrementItemQuantity
 } = useCart()
@@ -75,15 +67,17 @@ const hasPendingConfirmation = ref(false)
 
 const config = useRuntimeConfig()
 
+// Redirect to Shopify-hosted checkout with cart items
 const goToShopifyCheckout = () => {
+  // Extract variant IDs from full Shopify GIDs (format: gid://shopify/ProductVariant/123)
   const lineItems = cartItems.value.map(item => {
     const parts = item.id.split('/')
     const variantId = parts[parts.length - 1]
     return `${variantId}:${item.quantity}`
   }).join(',')
 
+  // Build Shopify cart permalink: /cart/:variantId1:quantity1,:variantId2:quantity2
   const checkoutUrl = `https://${config.public.shopifyDomain}/cart/${lineItems}`
-  console.log('Checkout URL:', checkoutUrl)
 
   window.location.href = checkoutUrl
 }

@@ -32,10 +32,11 @@
 
 .c {
   position: absolute;
-  width: 2px;
-  height: 2px;
+  width: 3px;
+  height: 3px;
   border-radius: 50%;
   opacity: 0;
+  box-shadow: 0 0 4px currentColor;
 }
 
 .c:nth-child(n) {
@@ -56,4 +57,128 @@
   }
 }
 
+/* Black background for entire site */
+body {
+  background: black;
+}
+
+/* 🎨 Orb Options - 5 different color variations */
+
+/* Shared wrapper styles */
+.orb-option-1, .orb-option-2, .orb-option-3, .orb-option-4, .orb-option-5 {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  z-index: 1;
+  overflow: visible;
+  pointer-events: none;
+}
+
+/* Option 1: Full Rainbow - Top Left */
+.orb-option-1 {
+  top: 15%;
+  left: 15%;
+}
+
+/* Option 2: Warm Colors - Top Right */
+.orb-option-2 {
+  top: 15%;
+  right: 15%;
+}
+
+/* Option 3: Cool Colors - Center */
+.orb-option-3 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Option 4: Brand Colors - Bottom Left */
+.orb-option-4 {
+  bottom: 15%;
+  left: 15%;
+}
+
+/* Option 5: White/Silver - Bottom Right */
+.orb-option-5 {
+  bottom: 15%;
+  right: 15%;
+}
+
+/* Multi-layer orbs for depth */
+.orb-layer-1, .orb-layer-2, .orb-layer-3 {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.orb-layer-1 {
+  z-index: 0; /* Background layer */
+}
+
+.orb-layer-2 {
+  z-index: 1; /* Middle layer */
+}
+
+.orb-layer-3 {
+  z-index: 2; /* Foreground layer */
+}
+
+/* Particle size variations for depth */
+.c-large {
+  width: 3px;
+  height: 3px;
+  box-shadow: 0 0 6px currentColor;
+  opacity: 0.6 !important;
+}
+
+.c-medium {
+  width: 3px;
+  height: 3px;
+  box-shadow: 0 0 6px currentColor;
+  opacity: 0.8 !important;
+}
+
+.c-small {
+  width: 2px;
+  height: 2px;
+  box-shadow: 0 0 4px currentColor;
+  opacity: 1 !important;
+}
+
+.wrap-option {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  animation: rotate 60s infinite linear;
+}
+
 /* Dynamically inject custom properties using Vue */
+
+/* ♿ Accessibility: Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .wrap-option {
+    animation: none !important;
+  }
+
+  .c {
+    animation: none !important;
+    opacity: 0.3 !important; /* Show particles but without motion */
+  }
+
+  /* Disable all transform-based animations */
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

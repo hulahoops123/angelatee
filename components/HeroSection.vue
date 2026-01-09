@@ -5,22 +5,18 @@
 >
     <!-- Text Container Wrapper (full width, controls overlay) -->
     <div class="relative z-10 w-full px-4 pb-20 sm:pb-32">
-      <!-- Blur Background (now spans full width of viewport) -->
-      <div
-        class="absolute inset-0 w-full h-full bg-gradient-to-t from-zinc-900/95 to-transparent backdrop-blur-sm pointer-events-none z-[-1]">
-      </div>
-
       <!-- Text Content -->
       <div class="text-amber-50 text-center max-w-2xl mx-auto pb-16">
-        <h1 class="text-4xl md:text-6xl font-bold leading-tight font-staatliches">
+        <h1 class="text-4xl md:text-6xl font-bold leading-tight font-staatliches text-shadow-sm">
           HIGH VIBE DRIP. WEAR YOUR TRUTH
         </h1>
-        <p class="text-lg md:text-xl mt-4 font-raleway">
+
+        <p class="text-lg font-bold md:text-xl mt-8 font-raleway text-white text-shadow-[0_0_2px_rgba(0,0,0,1),0_0_4px_rgba(0,0,0,1),0_2px_8px_rgba(0,0,0,0.8)]">
           For those bold enough to Talk it, Walk it & Wear it.
         </p>
         <button @click="scrollToProducts"
           class="inline-block mt-6 px-6 py-3 bg-zinc-50 text-amber-900 font-semibold rounded-lg hover:bg-zinc-100 transition font-raleway">
-          Wear Your Message
+          Shop Now
         </button>
       </div>
     </div>
