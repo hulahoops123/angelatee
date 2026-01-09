@@ -4,7 +4,7 @@
     <div ref="viewport" class="overflow-hidden">
       <div
         ref="container"
-        class="flex touch-pan-x"
+        class="flex carousel-touch"
         :style="slideStyles"
       >
         <div
@@ -70,3 +70,9 @@ onMounted(() => {
   }
 })
 </script>
+
+<style scoped>
+.carousel-touch {
+  touch-action: pan-x pinch-zoom;
+}
+</style>
