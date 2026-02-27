@@ -5,6 +5,20 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   css: ['@/assets/css/global.css'],
 
+  app: {
+    head: {
+      title: 'Aligned Apparel | High Vibe Drip. Wear Your Truth.',
+      meta: [
+        { name: 'description', content: 'For those bold enough to Talk it, Walk it & Wear it. Shop our curated collection of high vibe fashion.' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:url', content: 'https://alignedapparel.co.za' },
+        { property: 'og:title', content: 'Aligned Apparel | High Vibe Drip. Wear Your Truth.' },
+        { property: 'og:description', content: 'For those bold enough to Talk it, Walk it & Wear it. Shop our curated collection of high vibe fashion.' },
+        { property: 'og:image', content: 'https://alignedapparel.co.za/images/hero_optimized.webp' },
+      ],
+    },
+  },
+
   devServer: {
     port: 4000,
   },
